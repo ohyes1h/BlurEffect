@@ -8,7 +8,11 @@
 
 #import "ViewController.h"
 
+#import "BlurEffectViewExporter.h"
+
 @interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -16,14 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    [BlurEffectViewExporter setImage:[UIImage imageNamed:@"gsw.jpg"] blurRadius:@20 complete:^(UIImage *coverImage) {
+        self.imageView.image = coverImage;
+    }];
+    
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end
